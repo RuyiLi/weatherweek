@@ -1,0 +1,314 @@
+<title>WeatherWeek - Your five-day forecast</title>
+<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+<style>
+    body{
+        padding: 0;
+        margin: 0;
+        background-color: rgb(29, 170, 212);
+        text-align: center;
+    }
+
+    * {
+        font-family: 'Quicksand', sans-serif;
+    }
+
+    h1 {
+        color: #ededed;
+        font-size: 8rem;
+        margin-top: 50px;
+    }
+
+    svg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -999999;
+    }
+
+    #sun {
+        animation: movesun 30s ease infinite;
+    }
+
+    #clouds {
+        animation: moveclouds 60s linear infinite;
+    }
+
+    input[type="text"] {
+        display: block;
+        margin: auto;
+        color: #181818;
+        background-color: #ececec;
+        width: 30%;
+        height: 60px;
+        text-align: center;
+        font-size: 2rem;
+        outline: none;
+        border-radius: 6px;
+        border: 0;
+        box-shadow: 0 0 10px 0px #898989;
+        margin-bottom: 20px;
+    }
+
+    @keyframes movesun {
+        0% {
+            transform: rotateZ(0deg);
+        }
+        50% {
+            transform: rotateZ(180deg);
+        }
+        100% {
+            transform: rotateZ(360deg);
+        }
+    }
+
+    @keyframes moveclouds {
+        from {
+            left: -70%;
+        } to {
+            left: 105%;
+        }
+    }
+
+    button {
+        padding: 10px;
+        outline: none;
+        border: 0;
+        cursor: pointer;
+        font-size: 1.2rem;
+        border-radius: 5px;
+        margin-right: 20px;
+        background-color: #ededed;
+    }
+
+    button:hover {
+        background-color: rgb(179, 179, 179);
+        box-shadow: 0 0 20px 0px #898989;
+    }
+
+    #blanket {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 0;
+        width: 100%;
+        background-color: #303030c9;
+        text-align: center;
+        display: none;
+        overflow-y: scroll;
+    }
+
+    td {
+        padding: 5px;
+        margin: 0;
+        border: 1px solid rgba(255, 255, 255, 0.322);
+    }
+
+    td:last-child {
+        background-color: #edededb9;
+        color: #181818;
+    }
+
+    #blanket h1 {
+        font-size: 3rem;
+    }
+
+    #blanket table {
+        margin: auto;
+        color: white;
+        margin-bottom: 50px;
+    }
+
+    div.cover {
+        display: block!important;
+        animation: cover .5s ease-in;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes cover {
+        from {
+            height: 0;
+        } to {
+            height: 100%;
+        }
+    }
+</style>
+
+<h1>weatherweek</h1>
+
+<svg id="sun" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+    <ellipse xmlns="http://www.w3.org/2000/svg" ry="67.5" rx="67.5" id="svg_3" cx="50%" cy="20%" stroke-width="1.5" fill="#e8e161"/>
+</svg>
+
+<svg id="clouds" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+    <g xmlns="http://www.w3.org/2000/svg">
+        <title>Layer 1</title>
+        <ellipse ry="34" rx="34" id="svg_1" cy="152.2" cx="287" stroke-width="1.5" fill="#ffffff"/>
+        <ellipse ry="32" rx="32" id="svg_2" cy="167.2375" cx="322.5" stroke-width="1.5" fill="#ffffff"/>
+        <ellipse ry="32.5" rx="32.5" id="svg_3" cy="155.7375" cx="253" stroke-width="1.5" fill="#ffffff"/>
+        <ellipse ry="28" rx="28" id="svg_4" cy="189.2375" cx="233.5" stroke-width="1.5" fill="#ffffff"/>
+        <ellipse ry="30" rx="31" id="svg_5" cy="199.2375" cx="278.5" stroke-width="1.5" fill="#ffffff"/>
+        <ellipse ry="27" rx="35.5" id="svg_6" cy="198.2375" cx="335" stroke-width="1.5" fill="#ffffff"/>
+    </g>
+    <g xmlns="http://www.w3.org/2000/svg">
+        <title>Layer 1</title>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="396" cy="233.2" id="svg_1" rx="34" ry="34"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="431.5" cy="248.2375" id="svg_2" rx="32" ry="32"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="362" cy="236.7375" id="svg_3" rx="32.5" ry="32.5"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="342.5" cy="270.2375" id="svg_4" rx="28" ry="28"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="387.5" cy="280.2375" id="svg_5" rx="31" ry="30"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="444" cy="279.2375" id="svg_6" rx="35.5" ry="27"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="170" cy="130.2" id="svg_8" rx="34" ry="34"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="205.5" cy="145.2375" id="svg_9" rx="32" ry="32"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="136" cy="133.7375" id="svg_10" rx="32.5" ry="32.5"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="116.5" cy="167.2375" id="svg_11" rx="28" ry="28"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="161.5" cy="177.2375" id="svg_12" rx="31" ry="30"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="218" cy="176.2375" id="svg_13" rx="35.5" ry="27"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="436" cy="65.2" id="svg_14" rx="34" ry="34"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="471.5" cy="80.2375" id="svg_15" rx="32" ry="32"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="402" cy="68.7375" id="svg_16" rx="32.5" ry="32.5"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="382.5" cy="102.2375" id="svg_17" rx="28" ry="28"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="427.5" cy="112.2375" id="svg_18" rx="31" ry="30"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="484" cy="111.2375" id="svg_19" rx="35.5" ry="27"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="396" cy="233.2" id="svg_20" rx="34" ry="34"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="431.5" cy="248.2375" id="svg_21" rx="32" ry="32"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="362" cy="236.7375" id="svg_22" rx="32.5" ry="32.5"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="342.5" cy="270.2375" id="svg_23" rx="28" ry="28"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="387.5" cy="280.2375" id="svg_24" rx="31" ry="30"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="444" cy="279.2375" id="svg_25" rx="35.5" ry="27"/>
+       </g>
+       <g xmlns="http://www.w3.org/2000/svg">
+        <title>Layer 1</title>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="1078" cy="245.2" id="svg_1" rx="34" ry="34"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="1113.5" cy="260.2375" id="svg_2" rx="32" ry="32"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="1044" cy="248.7375" id="svg_3" rx="32.5" ry="32.5"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="1024.5" cy="282.2375" id="svg_4" rx="28" ry="28"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="1069.5" cy="292.2375" id="svg_5" rx="31" ry="30"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="1126" cy="291.2375" id="svg_6" rx="35.5" ry="27"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="852" cy="142.2" id="svg_8" rx="34" ry="34"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="887.5" cy="157.2375" id="svg_9" rx="32" ry="32"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="818" cy="145.7375" id="svg_10" rx="32.5" ry="32.5"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="798.5" cy="179.2375" id="svg_11" rx="28" ry="28"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="843.5" cy="189.2375" id="svg_12" rx="31" ry="30"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="900" cy="188.2375" id="svg_13" rx="35.5" ry="27"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="1118" cy="77.2" id="svg_14" rx="34" ry="34"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="1153.5" cy="92.2375" id="svg_15" rx="32" ry="32"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="1084" cy="80.7375" id="svg_16" rx="32.5" ry="32.5"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="1064.5" cy="114.2375" id="svg_17" rx="28" ry="28"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="1109.5" cy="124.2375" id="svg_18" rx="31" ry="30"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="1166" cy="123.2375" id="svg_19" rx="35.5" ry="27"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="1078" cy="245.2" id="svg_20" rx="34" ry="34"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="1113.5" cy="260.2375" id="svg_21" rx="32" ry="32"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="1044" cy="248.7375" id="svg_22" rx="32.5" ry="32.5"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="1024.5" cy="282.2375" id="svg_23" rx="28" ry="28"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="1069.5" cy="292.2375" id="svg_24" rx="31" ry="30"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="1126" cy="291.2375" id="svg_25" rx="35.5" ry="27"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="312" cy="269.2" id="svg_26" rx="34" ry="34"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="347.5" cy="284.2375" id="svg_27" rx="32" ry="32"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="278" cy="272.7375" id="svg_28" rx="32.5" ry="32.5"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="258.5" cy="306.2375" id="svg_29" rx="28" ry="28"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="303.5" cy="316.2375" id="svg_30" rx="31" ry="30"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="360" cy="315.2375" id="svg_31" rx="35.5" ry="27"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="176" cy="76.2" id="svg_32" rx="34" ry="34"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="211.5" cy="91.2375" id="svg_33" rx="32" ry="32"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="142" cy="79.7375" id="svg_34" rx="32.5" ry="32.5"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="122.5" cy="113.2375" id="svg_35" rx="28" ry="28"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="167.5" cy="123.2375" id="svg_36" rx="31" ry="30"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="224" cy="122.2375" id="svg_37" rx="35.5" ry="27"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="375" cy="61.2" id="svg_38" rx="34" ry="34"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="410.5" cy="76.2375" id="svg_39" rx="32" ry="32"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="341" cy="64.7375" id="svg_40" rx="32.5" ry="32.5"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="321.5" cy="98.2375" id="svg_41" rx="28" ry="28"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="366.5" cy="108.2375" id="svg_42" rx="31" ry="30"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="423" cy="107.2375" id="svg_43" rx="35.5" ry="27"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="312" cy="269.2" id="svg_44" rx="34" ry="34"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="347.5" cy="284.2375" id="svg_45" rx="32" ry="32"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="278" cy="272.7375" id="svg_46" rx="32.5" ry="32.5"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="258.5" cy="306.2375" id="svg_47" rx="28" ry="28"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="303.5" cy="316.2375" id="svg_48" rx="31" ry="30"/>
+        <ellipse fill="#ffffff" stroke-width="1.5" cx="360" cy="315.2375" id="svg_49" rx="35.5" ry="27"/>
+       </g>
+</svg>
+
+<div id="blanket">
+    <h1>Title</h1>
+    <a href='' style='margin-bottom:10px;color:#ededed;'>Return</a>
+    <table>
+        <tbody>
+            <tr>
+                <td>Date</td>
+                <td>Temperature (°C)</td>
+                <td>Min Temp (°C)</td>
+                <td>Max Temp (°C)</td>
+                <td>Pressure (kPa)</td>
+                <td>Humidity (%)</td>
+                <td>Weather</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<input type="text" placeholder="California,US">
+<button id="current" onclick="useCurrent()">Use my current location</button>
+<button onclick="submit()">Submit</button>
+
+<script>
+    const KEY = 'bd4b54a060725457149ce4ad0305dbef';
+    const base = 'http://api.openweathermap.org/data/2.5/forecast?id=524901&units=metric&APPID=' + KEY;
+    const $ = document.querySelector.bind(document);
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+    const useCurrent = () => {
+        if(navigator.geolocation){
+            navigator.geolocation.getCurrentPosition((pos) => {
+                const { coords } = pos;
+                query(`&lat=${coords.latitude}&lon=${coords.longitude}`);
+            });
+        } else {
+            $('#current').innerHTML = 'Your browser does not support geolocation.'
+            $('#current').disabled = true;
+        }
+    }
+
+    const submit = async () => {
+        query('&q=' + $('input[type="text"]').value);
+    }
+
+    const query = async (q) => {
+        try {
+            $('#blanket').classList.add('cover');
+            console.log('query url: ' + base + q)
+            const res = await fetch(base + q);
+            const json = await res.json();
+            $('#blanket h1').innerHTML = `${json.city.name}, ${json.city.country}`;
+            const table = $('tbody');
+            for(const data of json.list) {
+                const row = table.insertRow();
+
+                const { main } = data;
+
+                const c1 = row.insertCell();
+                const c2 = row.insertCell();
+                const c3 = row.insertCell();
+                const c4 = row.insertCell();
+                const c5 = row.insertCell();
+                const c6 = row.insertCell();
+                const c7 = row.insertCell();
+
+                const date = (new Date(data.dt*1000));
+                c1.innerHTML = `${date.getHours()}:00 ${days[date.getDay()]}, ${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+                c2.innerHTML = main.temp;
+                c3.innerHTML = main.temp_min;
+                c4.innerHTML = main.temp_max;
+                c5.innerHTML = main.pressure;
+                c6.innerHTML = main.humidity;
+                c7.innerHTML = data.weather[0].main;
+                const img = document.createElement('img');
+                img.src = `http://openweathermap.org/img/w/${data.weather[0].icon}.png`
+                c7.appendChild(img);
+            }
+        } catch(err) {
+            throw err;
+        }
+    }
+</script>
